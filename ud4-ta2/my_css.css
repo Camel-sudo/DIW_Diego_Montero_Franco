@@ -1,0 +1,68 @@
+header,
+footer {
+    color: rgb(255, 255, 255);
+    background-color: #000000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-style: 'Franklin Gothic Medium';
+}
+
+header>h2 {
+    margin-top: -25px;
+    font-size: 1;
+    margin-left: 2%;
+}
+
+header>h1,
+footer>p {
+    margin-left: 2%;
+}
+
+p {
+    font-size: 0.8;
+}
+
+ul {
+    font-size: 1.5;
+}
+
+a {
+    color: #000;
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background-color: #000;
+}
+
+nav>a:hover {
+    text-decoration: none;
+    background-color: #a9a9a9;
+}
+
+nav {
+    text-align: center;
+    position: fixed;
+    height: 100%;
+
+}
+
+nav>ul {
+    list-style: none;
+}
+
+nav>ul>li {
+    margin-top: 20%;
+}
+
+section>section,
+article {
+    margin-left: 15%;
+}
