@@ -1,0 +1,22 @@
+*,::after,::before{
+    margin: 0px;
+    padding: 0px;
+}
+.logo{
+    size: 80px;
+}
+section:first-of-type{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+label{
+    width: 7rem;
+    font-size: 1.2rem;
+}
+form :where(input,select){
+    max-width: 150px;
+    border-radius: 5px;
+    border-color: ;
+}

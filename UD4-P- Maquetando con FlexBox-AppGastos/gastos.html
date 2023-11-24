@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="my_css.css" rel="stylesheet"/>
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <header>
+            <a href="a" class="logo">
+                <img src="./img/logo.png" alt="Enlace a la pagina de inicio" />
+            </a>
+            <h1>Gestión de tus ahorros</h1>
+        </header>
+        <section class="content">
+            <h2 class="second-title">Añade un nuevo gasto:</h2>
+            <form id="exp-Form">
+                <div class="form-line">
+                    <p><label for="type">Tipo:</label>
+                        <select id="type">
+                            <option value="Elegir">Elige uno...</option>
+                            <option value="T.Debito">Tarjeta de débito</option>
+                            <option value="T.Credito">Tarjeta de crédito</option>
+                            <option value="Efectivo">Efectivo</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label for="name">Concepto</label>
+                        <input type="text" id="name" required>
+                    </p>
+                    <div class="form-line"></div>
+                    <p>
+                        <label for="name">Concepto:</label>
+                        <input type="text" id=""name required></p>
+                    <p>
+                        <label for="date"></label>
+                        <input type="date"id="date"required></p>
+                    <p>
+                        <label for="amount"></label>
+                        <input type="text"id="amount"required>
+                    </p>
+                </div>
+                <p>
+                    <button type="submit" class="button-save">Añadir un nuevo gasto</button>
+                </p>
+            </form>
+        </section>
+        <section class="content">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Concepto</th>
+                        <th>Fecha</th>
+                        <th>Cantidad</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody id="expenseTable">
+                    <tr>
+                        <td colspan="5">Aún no hay gastos!</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <tr>
+        <td>T.Debito</td>
+        <td>Gasolina</td>
+        <td>2023-11-06</td>
+        <td>$100</td>
+        <td>
+            <a class="deleteButton">Delete</a>
+            <a class="ModifyButton">Modificar</a>
+        </td>
+    </tr>
+    <tr>
+        <td>T.Credito</td>
+        <td>Luz</td>
+        <td>2023-11-07</td>
+        <td>$65</td>
+        <td>
+            <a class="deleteButton">Delete</a>
+            <a class="ModifyButton">Modificar</a>
+        </td>
+    </tr>
+</body>
+
+</html>
