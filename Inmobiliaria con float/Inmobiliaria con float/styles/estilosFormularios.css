@@ -1,0 +1,17 @@
+/* importa la hoja style.css */
+
+
+input.campo {
+	/* ancho 20rem padding 1rem. Fuente 1.1rem
+	color de fondo --color-fondo-input
+	sin borde
+	linea interna del input --color-fondo-oscuro
+	borde redondeado 5px*/
+}
+
+/* para el botón submin
+ancho 8rem
+color fondo --color-fondo-oscuro
+negrita sin borde*/
+/* valida los campos del formulario empleando colores o empleando un icono del tipo check o no check*/
+/* añade los efectos que consideres oportunos */

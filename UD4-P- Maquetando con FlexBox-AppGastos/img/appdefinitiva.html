@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        label, select {
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 300px; /* Modifica el valor del ancho según tus preferencias */
+            padding: 8px;
+            margin-right: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 4px;
+        }
+
+        button, select {
+            padding: 10px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #2196F3; /* Color azul predeterminado */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+
+        button#addTaskButton {
+            background-color: #4CAF50; /* Color verde para el botón "Agregar tarea" */
+        }
+
+        button#markAllButton {
+            background-color: #67cb46; /* Color verde para el botón "Marcar todas" */
+            border-radius: 50%; /* Hace el botón redondo */
+            width: 40px; /* Ajusta el ancho del botón */
+            height: 40px; /* Ajusta el alto del botón */
+            position: fixed;
+            bottom: 20px; /* Ajusta la posición en la parte inferior */
+            right: 20px; /* Ajusta la posición en la derecha */
+        }
+
+        button:hover {
+            background-color: #1565C0; /* Color azul más oscuro al hacer hover */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 300px;
+        }
+
+        .task {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+
+        .task input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .filter-buttons button {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>To-Do List</h1>
+
+<form id="taskForm">
+    <label for="taskInput">Nueva tarea:</label>
+    <input type="text" id="taskInput" required>
+    <button type="button" id="addTaskButton" onclick="addTask()">Agregar tarea</button>
+</form>
+
+<div class="filter-buttons">
+    <button onclick="filterTasks('all')">Todas</button>
+    <button onclick="filterTasks('completed')">Completadas</button>
+    <button onclick="filterTasks('uncompleted')">No completadas</button>
+</div>
+
+<ul id="taskList">
+    <!-- Aquí se mostrarán las tareas -->
+</ul>
+
+<button type="button" id="markAllButton" onclick="markAllCompleted()">
+    <span>&#10004;</span> <!-- Símbolo de marca (checkmark) -->
+</button>
+
+<script>
+    function addTask() {
+        var taskInput = document.getElementById('taskInput');
+        var taskList = document.getElementById('taskList');
+
+        if (taskInput.value.trim() !== '') {
+            var taskItem = document.createElement('li');
+            taskItem.className = 'task';
+
+            var checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.addEventListener('change', updateTaskStatus);
+
+            var taskText = document.createElement('span');
+            taskText.textContent = taskInput.value;
+
+            taskItem.appendChild(checkbox);
+            taskItem.appendChild(taskText);
+            taskList.appendChild(taskItem);
+
+            taskInput.value = ''; // Limpiar el input después de agregar la tarea
+        }
+    }
+
+    function updateTaskStatus(event) {
+        var taskItem = event.target.parentNode;
+        taskItem.style.textDecoration = event.target.checked ? 'line-through' : 'none';
+    }
+
+    function filterTasks(filter) {
+        var taskList = document.getElementById('taskList');
+        var tasks = taskList.getElementsByClassName('task');
+
+        for (var i = 0; i < tasks.length; i++) {
+            var taskItem = tasks[i];
+
+            switch (filter) {
+                case 'all':
+                    taskItem.style.display = 'block';
+                    break;
+                case 'completed':
+                    taskItem.style.display = taskItem.querySelector('input').checked ? 'block' : 'none';
+                    break;
+                case 'uncompleted':
+                    taskItem.style.display = taskItem.querySelector('input').checked ? 'none' : 'block';
+                    break;
+            }
+        }
+    }
+    
+    function markAllCompleted() {
+    var taskList = document.getElementById('taskList');
+    var tasks = taskList.getElementsByClassName('task');
+
+    for (var i = 0; i < tasks.length; i++) {
+        var checkbox = tasks[i].querySelector('input');
+
+        // Marca como completadas solo las tareas que no estén ya completadas
+        if (!checkbox.checked) {
+            checkbox.checked = true;
+            updateTaskStatus({ target: checkbox });
+        }
+    }
+}
+
+
+
+
+</script>
+
+</body>
+</html>
