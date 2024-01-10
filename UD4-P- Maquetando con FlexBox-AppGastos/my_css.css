@@ -1,22 +1,120 @@
-*,::after,::before{
+:root {
+    --fuente-titulos: "Titillium Web SemiBold", sans-serif;
+    --color-primario: #6d4747;
+    --color-secundario: #ff8c8c5a;
+    --color-fondo-primario: #7690b9;
+    --color-fondo-secundario: #f6f3ee;
+    --color-boton: #3d5a85;
+}
+
+*,
+::after,
+::before {
     margin: 0px;
     padding: 0px;
 }
-.logo{
-    size: 80px;
+
+.logo img {
+    max-width: 80px;
 }
-section:first-of-type{
+
+section:first-of-type {
     padding-top: 1rem;
     padding-bottom: 1rem;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
 }
-label{
-    width: 7rem;
+
+label {
+    min-width: 7rem;
     font-size: 1.2rem;
 }
-form :where(input,select){
+
+form :where(input, select) {
     max-width: 150px;
     border-radius: 5px;
-    border-color: ;
+    border-color: aliceblue;
+}
+
+body {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+@media screen and (max-width:600px) {
+    body {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width:700px) {
+    body {
+        min-height: 90%;
+    }
+
+    main {
+        max-height: 680px;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    body {
+        font-size: 1.6rem;
+    }
+}
+
+input,
+select {
+    max-width: 150px;
+    border-radius: 5px;
+    cursor: text;
+}
+
+th,
+td {
+    padding: 0.5rem;
+}
+
+.deleteButton::before {
+    content: '\01f5d1';
+}
+
+.ModifyButton::before {
+    content: '\01f58E';
+}
+
+.button-save {
+    padding: 0, 5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px #666;
+    background-color: var(--color-primario);
+    color:var(--color-fondo-secundario);
+    line-height: 1rem;
+}
+
+section {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    line-height: 2rem;
+}
+
+header {
+    display: flex;
+    background-color: var(--color-fondo-secundario);
+    border-color: var(--color-primario);
+}
+
+header h1 {
+    display: flex;
+    text-align: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+h2,h1,
+label {
+    color: var(--color-primario);
 }
