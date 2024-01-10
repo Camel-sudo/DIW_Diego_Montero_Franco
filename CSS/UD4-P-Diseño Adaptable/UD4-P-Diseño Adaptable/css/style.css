@@ -1,0 +1,22 @@
+header{
+    display: flex;
+    flex-direction: column;
+}
+.columna1_portada{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.columna1_portada section{
+    display: flexbox;
+    flex-direction: column;
+    background-image: "./img/artico.jpg";
+}
+.columna1_portada section h2{
+    display: flow-root;
+    align-items: center;
+    color: red;
+    width: 70%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+}
