@@ -1,0 +1,485 @@
+/* UD2- Repaso CSS
+Ejercicio 3 visibilidad
+Autor: 
+fecha:
+Nombre del fichero: 3-styles.css
+*/
+
+/* Da estilo a los elementos HTML de acuerdo con las siguientes instrucciones.
+NO ALTERES EL HTML EXISTENTE PARA HACER ESTO. ¡ESCRIBE SOLO CSS! */
+:root {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  --color-fondo: #b2c0c1;
+  --color-letra: #02464b;
+  --color-fondo-oscuro: #022b2e;
+  --color-fondo2: #607d8b;
+  --color-fondo-input: #b7d8da49;
+  font-size: 12px;
+  --size-header: 130px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  min-width: 100vw;
+}
+
+a {
+  color: var(--color-fondo-oscuro);
+  text-decoration-color: var(--color-fondo-oscuro);
+}
+
+/* todos los encabezados tendrán como tipo de letra
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+/* H1 tamaño letra 3.5 veces la letra root */
+h1 {
+  font-size: calc(1rem * 3.5);
+}
+
+/* H2 tamaño letra 2.5 veces la letra root */
+
+h2 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* H3 tamaño letra 2 veces la letra root */
+
+h3 {
+  font-size: calc(1rem * 2.5);
+  color: var(--color-fondo-oscuro);
+  text-align: center;
+}
+
+/* Para la clases oculto oculta el elemento sin que ocupe espacio*/
+.oculto {
+  display: none;
+}
+
+.centradoHV {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* posicionamiento flotante a la izquierda */
+.izq {
+  float: left;
+}
+
+/* posicionamiento flotante a la derecha */
+
+.dch {
+  float: right;
+}
+
+/* limpiamos el posicionamiento flotante */
+.clear {
+  clear: both;
+}
+
+nav li {
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+/* ============================ Estilos de la cabecera =====================*/
+/* pon la cabecera centrada con el mismo color que el logo*/
+header {
+  /* para centrar horizontalmente. Tiene que funcionar como bloque, si es un elemento inline debemos poner
+    display: block*/
+  margin: 0 auto;
+  text-align: center;
+  /* esta es una forma de hacerlo 
+    position: relative;
+    top: 50%; */
+  /* otra forma es hacer que la cabecera se comporte como una celda de una tabla y emplear verticarl-align*/
+  /* display: table-cell;
+    vertical-align: middle; */
+  width: 100vw;
+  max-height: var(--size-header);
+  height: auto;
+  background-color: var(--color-fondo);
+  color: white;
+  position: fixed;
+  z-index: 1;
+}
+header #logo {
+  width: 180px;
+}
+
+#img_menu {
+  top: 2%;
+}
+
+/* ============================ Estilos del menú ==========================*/
+/* imagen del menú deplegable - hamburguesa */
+#img_menu {
+  position: relative;
+  top: 75px;
+  left: 5%;
+  width: auto;
+  height: auto;
+}
+
+/* menu desplegado */
+nav#menu {
+  overflow-y: auto;
+  background: var(--color-fondo2);
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  min-width: 300px;
+  width: auto;
+  max-width: 100vw;
+  box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* cuando el menú no está visible al no haber pulsado sobre el enlace que nos lleva a el, este está fuera del rango de visión
+Esto podemos hacerlo de dos formas:
+1 - poniendo el menú fuera del rango de visión. left -100%
+2 - Usando display a none
+3 - Usando visibility a hidden */
+#menu:not(:target) {
+  /*1- left: -100%;*/
+  /*2 - display: none;*/
+  visibility: hidden;
+  left: 0;
+  transition: left 1.5s;
+}
+
+#menu:target {
+  /* 1- left: 0;*/
+  /* 2-  display:inline-block;
+    left: 0;*/
+  visibility: visible;
+  transition: left 1s;
+}
+
+nav#menu a {
+  color: white;
+  font-size: 1.5rem;
+  line-height: 2.5;
+}
+
+/* ============================ Estilos del main ========================= */
+main {
+  clear: both;
+  width: 100%;
+  height: max-content;
+  padding-top: var(--size-header);
+}
+
+/*=========================== Estilos para el aside de publicidad =============================*/
+
+aside#publicidad,
+aside#contacta {
+  width: 100vw;
+  max-width: 100vw;
+  max-height: 50vh;
+  /*height: 100vh;*/
+  /* Si background-size: cover: la imagen es redimensionada proporcionalmente y cubre toda la caja. Parte de la imagen puede no aparecer en pantalla.*/
+  background-size: 100vw auto;
+  height: calc(100vw / 2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+aside#publicidad {
+  background: url(../img/img-publicitaria.jpg) no-repeat;
+  background-size: cover;
+}
+
+aside#contacta {
+  background: url(../img/contacta.jpg) no-repeat;
+  background-size: cover;
+}
+
+/* figure#imag_publi img {
+  width: auto;
+  max-width: 100vw;
+} */
+
+aside#publicidad h2,
+aside#contacta #infor {
+  background-color: #02464b8c;
+  color: white;
+  box-shadow: 3px 0px 3px black;
+  text-align: center;
+}
+
+/*================================ Estilos para los articulos, sections ============================*/
+.bloque {
+  margin: 2rem 0;
+  font-size: 1rem;
+  width: auto;
+  height: auto;
+  text-align: center;
+}
+
+.bloque * {
+  margin: 0.5rem 1rem;
+}
+
+.bloque h2 {
+  background-color: #02464b9e;
+  color: white;
+  margin: 0;
+  display: block;
+}
+
+.texto {
+  width: 55%;
+  height: auto;
+  text-align: justify;
+  margin: 0 auto;
+  margin-top: 10%;
+}
+
+.bloque figure {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.bloque figure img {
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+}
+
+/*=================== Estilos caja de búsqueda ========================== */
+/* estilo del formulario de búsqueda*/
+
+form.busqueda {
+  /* tenemos que poner posición absoluta ya que si ponemos relativa le reserva el espacio y se nota el movimeinto del icono centrar */
+  position: absolute;
+  top: calc((var(--size-header) - 40px) / 2);
+  right: 5%;
+  /* transform: translate(-50%,-50%);*/
+  transition: all 0.3s linear;
+  width: 50px;
+  height: 50px;
+  background: white;
+  box-sizing: border-box;
+  border-radius: 25px;
+  border: 4px solid white;
+  padding: 5px;
+}
+
+form.busqueda input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 42.5px;
+  line-height: 30px;
+  outline: 0;
+  border: 0;
+  display: none;
+  font-size: 1em;
+  border-radius: 20px;
+  padding: 0 20px;
+}
+
+.fa {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 42.5px;
+  height: 42.5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.fa-search {
+  transition: all 0.3s linear;
+  color: var(--color-fondo-oscuro);
+}
+
+form.busqueda:hover,
+form.busqueda:valid {
+  width: 200px;
+  cursor: pointer;
+}
+
+form.busqueda:hover input,
+form.busqueda:valid input {
+  display: block;
+}
+
+form.busqueda:hover .fa,
+form.busqueda:valid .fa {
+  background: var(--color-fondo-oscuro);
+  color: white;
+}
+
+a#clear-btn {
+  padding: 0;
+  margin: 0;
+  height: 2rem;
+  border-radius: 20px;
+  padding-bottom: 2.5rem;
+  width: 10rem;
+  background-color: var(--color-fondo-oscuro);
+  text-decoration: none;
+  text-align: center;
+  border: none;
+}
+
+#clear-btn:hover {
+  background-color: white;
+  color: var(--color-fondo-oscuro);
+}
+
+form.busqueda a {
+  display: none;
+  position: absolute;
+  top: 70px;
+  bottom: 0;
+  /* left: 0; */
+  right: 0;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+
+form.busqueda:valid a {
+  display: block;
+}
+
+/*====================================== Estilos del footer =================================*/
+footer {
+  background-color: var(--color-fondo);
+  color: #212121;
+  width: 100%;
+  height: max-content;
+  margin-bottom: 0;
+  position: relative;
+  bottom: 0;
+  right: 0;
+  font-size: 1rem;
+  box-shadow: -3px 0px 10px var(--color-fondo-oscuro);
+}
+footer .contenedor {
+  display: block;
+  float: none;
+  width: 100%;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+footer .contenedor:not(:first-child) {
+  border-top: 1px dotted var(--color-fondo-oscuro);
+  margin: 0.5rem 0;
+}
+
+footer nav li a {
+  color: #212121;
+}
+
+#normas {
+  text-align: center;
+}
+
+footer #menuPie {
+  padding: 0 2rem;
+}
+
+footer #menuPie nav {
+  margin-left: 2rem;
+  font-style: italic;
+}
+
+/* ============================= MEDIA QUERIES PANTALLAS MOVILES =======================================*/
+
+@media all and (min-width: 200px) and (max-width: 767px) {
+  /*============================ Estilos para los aside  ======================*/
+  /* aside#publicidad,
+  aside#contacta {
+    background-size: 100vw auto;
+    height: calc(100vw / 2);
+  }*/
+  /*============================= Estilos para los artículos y seciones ===========================*/
+  .bloque figure {
+    width: 80%;
+    margin: 0 auto;
+    float: none;
+  }
+
+  .texto {
+    text-align: center;
+    float: none;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+  }
+}
+
+/* ============================= MEDIA QUERIES TABLET Y ESCRITORIO =======================================*/
+
+@media screen and (min-width: 768px) {
+  :root {
+    font-size: 14px;
+    --size-header: 200px;
+  }
+  h2 {
+    font-size: calc(1rem * 3);
+  }
+  header #logo {
+    width: 288px;
+    float: inherit;
+  }
+  .bloque {
+    font-size: 1.2rem;
+  }
+
+  /*=================== estilos para el pie ==================*/
+
+  footer {
+    font-size: 1rem;
+  }
+
+  footer .contenedor {
+    width: 33%;
+    display: inline-block;
+  }
+  footer .contenedor:not(:first-child) {
+    border-top: inherit;
+  }
+}
+@media screen and (min-width: 4800px) {
+  /*============================ Estilos para los aside  ======================*/
+  aside#publicidad,
+  aside#contacta {
+    background-size: cover;
+  }
+}
